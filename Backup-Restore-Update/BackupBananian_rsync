@@ -1,0 +1,50 @@
+#!/bin/bash
+# Script fuer inkrementelles Backup mittels rsync
+
+### Einstellungen ##
+BACKUPDIR="/mnt/SSD/Backup/"       ## Pfad zum Backupverzeichnis
+DATUM="$(date +%d-%m-%Y)"          ## Datumsformat einstellen
+ZEIT="$(date +%H:%M)"              ## Zeitformat einstellen
+
+### Verzeichnisse/Dateien welche nicht gesichert werden sollen ! Achtung keinen Zeilenumbruch ! ##
+EXCLUDE= --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}
+
+### Wechsel in root damit die Pfade stimmen ##
+cd /
+
+### Backupverzeichnis anlegen ##
+mkdir -p ${BACKUPDIR}
+
+### Test ob Backupverzeichnis existiert und Mail an Admin bei fehlschlagen ##
+if [ ! -d "${BACKUPDIR}" ]; then
+
+mail -s "Backupverzeichnis nicht vorhanden!" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} konnte nicht erstellt werden. Das Verzeichnis ${BACKUPDIR} wurde nicht gefunden und konnte auch nicht angelegt werden.
+Mit freundlichem Gruss Backupscript
+EOM
+
+ . exit 1
+fi
+
+### Backup ausfuehren ##
+rsync -aAXv --delete ${EXCLUDE} / ${BACKUPDIR}
+
+### Abfragen ob das Backup erfolgreich war ##
+if [ $? -ne 0 ]; then
+
+mail -s "Backup (${DATUM}) war fehlerhaft!" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} wurde mit Fehler(n) beendet.
+Mit freundlichem Gruss Backupscript
+EOM
+
+else
+
+mail -s "Backup (${DATUM}) war erfolgreich" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} wurde erfolgreich beendet.
+Mit freundlichem Gruss Backupscript
+EOM
+
+fi

@@ -1,0 +1,15 @@
+Update des Bananian Systems
+
+Das System überprüft in täglichen Intervallen auf Aktualisierungen und meldet dies an den Administrator mittels einer Mail an den Mail-Server. Nach einem der Backup Prozesse sollen ebenfalls verfügbare Updates und Aktualisierungen von Programmen durchgeführt werden. Durch den Terminalaufruf 'apt-get -u upgrade' werden alle verfügbaren Pakete, welche geupdatet werden können, angezeigt.
+Hierbei kann im Anschluss entschieden werden, ob das Update durchgeführt werden soll oder nicht.
+
+Update des Banana Pie:
+
+sudo -s rpi-update reboot
+
+ODER
+
+sudo apt-get update
+sudo apt-get upgrade
+
+!!!Muss getestet werden!!!

@@ -1,0 +1,87 @@
+Backup und Wiederherstellung des Bananian Systems
+
+Mögliche externe Programme sind FauBackup (bietet inkrementelles System) und gitbac
+Für die Ausführung wurde der bereits in Debian hinterlegte Aufruf 'dd' verwendet, da nur ein komplettes Betriebssystem Backup angelegt werden soll.
+
+
+1.
+
+Übersicht der vorhandenen Dateisysteme mittels des Terminalaufrufs 'df'
+
+[BILD1 Vorhandene Dateisysteme]
+
+
+2.
+
+Terminalaufruf für den Backupprozess
+
+sudo dd if=INPUTPARTITION of=OUTPUTFILE
+
+sudo	-> Backupprozess benötigt root-Rechte
+dd	-> Konvertieren und Kopieren
+if=FILE	-> Die Datei oder Partition welche integriert wird
+of=FILE	-> Die Output Datei welche angelegt wird
+
+
+3.
+
+Nutzung von Terminalaufruf 'pv' um den Fortschritt des Backup Prozesses zu sehen
+Die Restzeit lässt sich nur durch das Hinterlegen der Größe der Partition anzeigen (-s)
+
+sudo dd if=INPUTPARTITION |pv| sudo dd of=OUTPUTFILE
+
+Alternativ kann ebenfalls der Statusaufruf verwendet werden
+
+sudo dd if=INPUTPARTITION of=OUTPUTFILE status=progress
+
+[BILD2 Laufender Backupprozess mit Statusanzeige]
+
+
+4.  
+
+Wiederherstellen eines hinterlegte Backups läuft ähnlich ab.
+
+sudo dd if=OUTPUTFILE of=INPUTPARTITION status=progress
+
+[BILD3 Laufender Wiederherstellungsprozess mit Statusanzeige]
+
+
+5.
+
+Um das Zeitintervall der Backups einzustellen wird der 'Cron' Dienst verwendet.
+Hiermit können Skripte und Programme zu festgelegten Zeiten gestartet werden.
+Wenn ein hinterlegter Job täglich zu einer bestimmten Uhrzeit ausgeführt wird muss allerdings auch der Rechner zu dem Zeitpunkt aktiv sein. Ist dies nicht der Fall, startet der Prozess nicht. Um dies zu umgehen wird 'Anacron' verwendet.
+Durch ablegen des Skripts in eines der entsprechenden Verzeichnisse wird der Prozess entsprechend ausgeführt.
+
+/etc/cron.hourly/ - Stündlich ausführen
+
+/etc/cron.daily/ - Täglich ausführen
+
+/etc/cron.weekly/ - Wöchentlich ausführen
+
+/etc/cron.monthly/ - Monatlich ausführen
+
+-----
+
+Der Aufruf 'dd' führt zu vielen unnötigen Schreibprozessen was schädlich für die hinterlegte SSD sein kann.
+Daher muss die Blockgröße von standardmäßig 512 Bytes durch Nutzung des Parameters 'bs='auf ein vielfaches der SSD gesetzt werden.
+Da der Vorgang aber dennoch als suboptimal angesehen wird wurde die Methode 'rsync' verwendet.
+
+
+Anwenden von rsync:
+
+Terminalaufruf für den Backupprozess
+
+rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /path/to/backup/folder
+
+rsync		-> Kopieren der Dateien
+-aAX		-> Übertragung im Archiv Modus wodurch alle symbolischen Verweise beibehalten werden
+--delete	-> Dateien die im Ursprungsverzeichnis nicht mehr existieren werdem im Zielverzeichnis ebenfalls gelöscht
+--exclude 	-> Dateien werden ausgelassen
+
+-----
+
+Weitere Anwendungsmöglichkeit mittels 'tar' Archivierung
+
+
+Dieses Verfahren wurde im Laufe des Projekts mittels eines Skripts und Crontab automatisiert.
