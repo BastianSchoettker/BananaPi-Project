@@ -1,0 +1,28 @@
+2. Termin ProjektSS17
+
+Besprechungsdatum: 22.03.2017
+Protokoll erstellt: 22.03.2017
+Beginn: 13:00 Uhr
+Ende: 13:45 Uhr
+Anwesendheit: Bastian Schöttker, Jonas Einsele, Tom Lehmann, Jakob Beerlage, Elias Backmund
+
+
+Besprechung
+
+- Fokus liegt zu Beginn auf den Teilaufgaben + IP-Fire, WLAN-Treiber kommt an letzter Stelle 
+- Mögliche Integration von Darstellung des Netzwerktraffic (IP, URL, Uhrzeit) anhand der Logdateien
+
+Vorrübergehende Aufgabeneinteilung
+
+Tom Lehmann:		Implementierung eines RADIUS-Servers zur zentralen Authentifizierung von Anwendern und Voucher-System
+Jakob Beerlage:		IP-Fire Betriebssystem
+Elias Backmund:		WLAN-Chip ohne erforderliche Implementation eines Treibers
+Jonas Einsele:		Mail-Server; SAMBA/NFS Server; Einarbeitung in WLAN-Treiber
+Bastian Schöttker: 	Automatische Aktualisierung von Programmpaketen des Systems; Implementierung einer Display-Statusanzeige
+
+Im Falle, dass ein Teammitglied aufgrund von Krankheit ausfällt wird das weitere Vorgehen zeitnah untereinander abgesprochen.
+
+Ziele bis zum nächsten Treffen (29.03.2017)
+
+- Evaluierung von IP-Fire Betriebssystem
+- Erste Einarbeitung in die verteilten Aufgaben

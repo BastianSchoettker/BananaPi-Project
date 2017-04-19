@@ -1,0 +1,28 @@
+﻿5. Termin ProjektSS17
+
+Besprechungsdatum: 19.04.2017
+Protokoll erstellt: 19.04.2017
+Beginn: 12:50 Uhr
+Ende: 13:40 Uhr
+Anwesendheit: Bastian Schöttker, Tom Lehmann
+
+Besprechung und Zwischenergebnisse
+
+Gruppe:
+
+Git zum einstellen von Dokumentationen, Einstellungen und Skripten:
+https://github.com/BastianSchoettker/BananaPi-Project/
+
+Bastian Schöttker
+
+- Rsync Backup mit 'cp -a' in einen Ordner für ältere Backups kopieren oder mittels 'tar' archivieren (Inkrementelles Backup + Vollbackup)
+- 'dd' ist nicht für SSD geeignet aufgrund der großen Anzahl von Schreib-und Lesezyklen (https://wiki.ubuntuusers.de/dd/)
+- Mittels 'apt-get -u upgrade' werden alle Pakete aufgelistet welche aktualisiert werden
+- Protokoll Dateien sollten in '/var/log/dist-upgrade' liegen, nach Upgrade öffnen?
+
+Ziele bis zum nächsten Treffen (26.04.2017)
+
+- Internetzugang für Banana Pi
+- WLAN Hotspots verbinden
+- Bananian RADIUS integrieren
+- Backup Skript in Bananian integrieren

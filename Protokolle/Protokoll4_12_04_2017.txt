@@ -1,0 +1,53 @@
+﻿4. Termin ProjektSS17
+
+Besprechungsdatum: 12.04.2017
+Protokoll erstellt: 12.04.2017
+Beginn: 12:50 Uhr
+Ende: 13:40 Uhr
+Anwesendheit: Bastian Schöttker, Jonas Einsele, Tom Lehmann, Jakob Beerlage, Elias Backmund
+
+Besprechung und Zwischenergebnisse
+
+Gruppe:
+
+- DHCP bei Bananian war nicht eingeschaltet
+- Internetzugriff nicht möglich über vorhandene Ports
+- Zugriff auf den Banana Pi via Putty SSH Verbindung konnte nicht hergestellt werden
+
+Tom Lehmann:
+
+- RADIUS Server wurde auf VM ausprobiert und Authentifizierung bei Bananian ist möglich
+- MySQL wurde integriert
+- Über WAN Anschluss läuft möglicher Weise DHCP
+
+Elias Backmund:
+
+- MAC Adresse von WLAN Chip geändert
+- Mehrere WLAN SSIDs wurden hinterlegt
+- Hotspots tauchen auf können aber nicht angesprochen werden
+- Theoretisch können ohne WLAN-Treiber mehrere Hotspots ermöglicht werden
+
+Jakob Beerlage:
+
+- IP-Fire LAN Verbindung hat keine IP-Adresse bekommen
+- IP-Fire ist nach umfangreicher Analyse keine Alternative für Bananian und OpenWrt
+
+Jonas Einsele:
+
+- Mail-Server konnte noch nicht implementiert werden da Internetverbindung nicht vorhanden ist
+
+Bastian Schöttker
+
+- 'dd' Befehl schlecht für Backups via SSD
+- Volles Systembackup mittels rsync realisierbar
+- Inkrementelles und normales Backup Skript wurden mit lokaler Ubuntu VM getestet
+- Inkrementelles Backup weißt Fehler bezüglich /r auf + benötigt Mail Server
+- Normales Backup mittels 'dd' Befehl funktioniert
+- Backupprozess für Bananian funktioniert mittels 'dd if=/dev/mmcblk0 of=/mnt/SSD/backup1.img'
+
+Ziele bis zum nächsten Treffen (19.04.2017)
+
+- Internetzugang für Banana Pi
+- WLAN Hotspots verbinden
+- Bananian RADIUS integrieren
+- Backup Skript in Bananian integrieren
