@@ -83,5 +83,14 @@ rsync		-> Kopieren der Dateien
 
 Weitere Anwendungsmöglichkeit mittels 'tar' Archivierung
 
+Wechsel in das Backupverzeichnis dann
+
+tar -cpzf Backup.tar ORDNER
+
+danach das Archiv in Backup_ALT legen
+
+mv Backup.tar Backup_ALT/
+
+Somit gibt es ein monatliches Backup und wöchentliche inkrementelle Backups auf die zurückgegangen werden kann.
 
 Dieses Verfahren wurde im Laufe des Projekts mittels eines Skripts und Crontab automatisiert.
