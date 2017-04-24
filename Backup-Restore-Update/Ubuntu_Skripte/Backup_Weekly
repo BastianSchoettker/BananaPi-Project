@@ -2,13 +2,10 @@
 # Script fuer inkrementelles Backup mittels rsync
 
 ### Einstellungen ##
-BACKUPDIR="/media/sf_OrdnerWindows/Backup/"         ## Pfade zu Backupverzeichnissen
-BACKUPOLDDIR="/media/sf_OrdnerWindows/Backup_ALT/"
-DATUM="$(date +%d-%m-%Y)"          ## Datumsformat einstellen
-ZEIT="$(date +%H:%M)"              ## Zeitformat einstellen
-
-### Verzeichnisse/Dateien welche nicht gesichert werden sollen ! Achtung keinen Zeilenumbruch ! ##
-EXCLUDE= --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}
+BACKUPDIR="/media/sf_OrdnerWindows/Backup/"        ## Pfad zum woechentlichen Backupverzeichnis
+BACKUPOLDDIR="/media/sf_OrdnerWindows/Backup_ALT/" ## Pfad zum monatlichen Backupverzeichnis
+DATUM="$(date +%d-%m-%Y)"          	 	   ## Datumsformat einstellen
+ZEIT="$(date +%H:%M)"              		   ## Zeitformat einstellen
 
 ### Wechsel in root damit die Pfade stimmen ##
 cd /
@@ -29,8 +26,15 @@ EOM
  . exit 1
 fi
 
+### Nutzer auf Backupprozess hinweisen ##
+
+clear
+echo "Woechentliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+sleep 10
+
 ### Nun wird das eigentliche Backup ausgefuehrt ##
-rsync -aAXv --delete ${EXCLUDE} / ${BACKUPDIR}
+rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / ${BACKUPDIR}
+
 
 ### Abfragen ob das Backup erfolgreich war ##
 if [ $? -ne 0 ]; then
@@ -51,10 +55,6 @@ EOM
 
 fi
 
-### Kopieren des Backups in den Ordner Backups_ALT ###
-
-sudo cp -a ${BACKUPDIR}. ${BACKUPOLDDIR}
-
 ### Update Pakete ###
 
 sudo apt-get update
@@ -66,3 +66,7 @@ sudo apt-get clean
 ### Abfrage ob Upgrade durchgeführt werden soll mit Auflistung der Pakete ###
 
 sudo apt-get -u upgrade
+
+echo "Woechentliches Backup erfolgreich abgeschlossen."
+
+exit 0

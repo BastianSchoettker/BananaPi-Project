@@ -2,9 +2,10 @@
 # Script fuer inkrementelles Backup mittels rsync
 
 ### Einstellungen ##
-BACKUPDIR="/mnt/SSD/Backup/"       ## Pfad zum Backupverzeichnis
-DATUM="$(date +%d-%m-%Y)"          ## Datumsformat einstellen
-ZEIT="$(date +%H:%M)"              ## Zeitformat einstellen
+BACKUPDIR="/mnt/SSD/Backup_Weekly/"        ## Pfad zum woechentlichen Backupverzeichnis
+BACKUPOLDDIR="/mnt/SSD/Backup_Monthly/" ## Pfad zum monatlichen Backupverzeichnis
+DATUM="$(date +%d-%m-%Y)"          	 	   ## Datumsformat einstellen
+ZEIT="$(date +%H:%M)"              		   ## Zeitformat einstellen
 
 ### Verzeichnisse/Dateien welche nicht gesichert werden sollen ! Achtung keinen Zeilenumbruch ! ##
 EXCLUDE= --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}
@@ -12,13 +13,14 @@ EXCLUDE= --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/med
 ### Wechsel in root damit die Pfade stimmen ##
 cd /
 
-### Backupverzeichnis anlegen ##
+### Backupverzeichnisse anlegen ##
 mkdir -p ${BACKUPDIR}
+mkdir -p ${BACKUPOLDDIR}
 
 ### Test ob Backupverzeichnis existiert und Mail an Admin bei fehlschlagen ##
-if [ ! -d "${BACKUPDIR}" ]; then
+if [ ! -d "${BACKUPDIR}" && "${BACKUPOLDDIR}" ]; then
 
-mail -s "Backupverzeichnis nicht vorhanden!" root <<EOM
+mail -s "Backupverzeichnisse nicht vorhanden!" root <<EOM
 Hallo Admin,
 das Backup am ${DATUM} konnte nicht erstellt werden. Das Verzeichnis ${BACKUPDIR} wurde nicht gefunden und konnte auch nicht angelegt werden.
 Mit freundlichem Gruss Backupscript
@@ -27,8 +29,15 @@ EOM
  . exit 1
 fi
 
-### Backup ausfuehren ##
+### Nutzer auf Backupprozess hinweisen ##
+
+clear
+echo "Woechentliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+sleep 10
+
+### Nun wird das eigentliche Backup ausgefuehrt ##
 rsync -aAXv --delete ${EXCLUDE} / ${BACKUPDIR}
+
 
 ### Abfragen ob das Backup erfolgreich war ##
 if [ $? -ne 0 ]; then
@@ -48,3 +57,19 @@ Mit freundlichem Gruss Backupscript
 EOM
 
 fi
+
+### Update Pakete ###
+
+sudo apt-get update
+
+### Alte Installationspakete löschen
+
+sudo apt-get clean
+
+### Abfrage ob Upgrade durchgeführt werden soll mit Auflistung der Pakete ###
+
+sudo apt-get -u upgrade
+
+echo "Woechentliches Backup erfolgreich abgeschlossen."
+
+exit 0

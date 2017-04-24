@@ -1,0 +1,19 @@
+#!/bin/bash
+
+### Wechsel in root damit die Pfade stimmen ##
+
+cd /
+
+### Archivieren und Kopieren des Backups in den Ordner Backups_ALT ###
+
+cd /mnt/SSD/
+
+clear
+echo "Monatliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+
+tar -cpzf Backup.tar Backup_Weekly
+mv Backup.tar Backup_Monthly/
+
+echo "Monatliches Backup erfolgreich abgeschlossen."
+
+exit 0
