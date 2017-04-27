@@ -94,3 +94,9 @@ mv Backup.tar Backup_ALT/
 Somit gibt es ein monatliches Backup und wöchentliche inkrementelle Backups auf die zurückgegangen werden kann.
 
 Dieses Verfahren wurde im Laufe des Projekts mittels eines Skripts und Crontab automatisiert.
+
+-----
+
+Wiederherstellen des Rsync Backups durch folgenden Befehl:
+
+rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/lost+found,/home/*}
