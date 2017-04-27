@@ -5,11 +5,9 @@ Hierbei kann im Anschluss entschieden werden, ob das Update durchgeführt werden 
 
 Update des Banana Pie:
 
-sudo -s rpi-update reboot
-
-ODER
-
 sudo apt-get update
 sudo apt-get upgrade
 
-!!!Muss getestet werden!!!
+Durch Aufruf von 'unattended-upgrade' werden lediglich Sicherheitsupdates installiert.
+'unattended-upgrade --dry-run -d' überprüft auf Verfügbarkeit installiert aber keine Updates.
+Logdateien werden im Verzeichnis /var/log/unattended-upgrades/ gespeichert.
