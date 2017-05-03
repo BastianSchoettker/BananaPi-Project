@@ -1,0 +1,20 @@
+#!/bin/bash
+
+### Wechsel in root damit die Pfade stimmen ##
+
+cd /
+
+### Archivieren und Kopieren des Backups in den Ordner Backups_ALT ###
+
+cd /media/sf_OrdnerWindows/Backup_ALT
+
+touch -a /media/sf_OrdnerWindows/Backup_ALT/Backup.tar
+
+clear
+echo "Monatliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+
+tar -cpvzf Backup.tar /media/sf_OrdnerWindows/Backup
+
+echo "Monatliches Backup erfolgreich abgeschlossen."
+
+exit 0
