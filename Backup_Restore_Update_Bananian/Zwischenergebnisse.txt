@@ -1,9 +1,9 @@
-03.04.2017
+ï»¿03.04.2017
 
 - Zugriff auf den Banana Pi via Putty SSH Verbindung konnte nicht hergestellt werden
 - Hinterlegter Key war Public nicht Private
-- Gerät konnte keine Verbindung zum Internet herstellen, wodurch zusätzliche Pakete nicht installiert werden konnten
-- 'dd' Befehl schlecht für Backups via SSD
+- GerÃ¤t konnte keine Verbindung zum Internet herstellen, wodurch zusÃ¤tzliche Pakete nicht installiert werden konnten
+- 'dd' Befehl schlecht fÃ¼r Backups via SSD
 - Volles Systembackup mittels rsync realisieren
 
 Backupprozess funktioniert mittels 'dd if=/dev/mmcblk0 of=/mnt/SSD/backup1.img'
@@ -11,45 +11,45 @@ Backupprozess funktioniert mittels 'dd if=/dev/mmcblk0 of=/mnt/SSD/backup1.img'
 05.04.2017
 
 - Inkrementelles und normales Backup Skript wurden mit lokaler Ubuntu VM getestet
-- Inkrementelles Backup weißt Fehler bezüglich /r auf
-- Normales Backup auch mittels Terminalaufruf endet in Fehlermeldung, dass nicht genügend Rechte vorhanden sind (Virtualisierungsproblem?)
+- Inkrementelles Backup weiÃŸt Fehler bezÃ¼glich /r auf
+- Normales Backup auch mittels Terminalaufruf endet in Fehlermeldung, dass nicht genÃ¼gend Rechte vorhanden sind (Virtualisierungsproblem?)
 
-Testen der Skripte und Terminalaufrufe am Banana Pi sinnvoller da weniger Fehler bezüglich Virtualisierung auftreten können.
-Dafür muss der Internetzugang und der Private Key vorhanden sein.
+Testen der Skripte und Terminalaufrufe am Banana Pi sinnvoller da weniger Fehler bezÃ¼glich Virtualisierung auftreten kÃ¶nnen.
+DafÃ¼r muss der Internetzugang und der Private Key vorhanden sein.
 
-Problem mit Gemeinsamen Ordner möglicher Weise gelöst. Ordner Name musste anders wie Windows Ordner Name sein.
+Problem mit Gemeinsamen Ordner mÃ¶glicher Weise gelÃ¶st. Ordner Name musste anders wie Windows Ordner Name sein.
 
 13.04.2017
 
 - Rsync Backup friert ein bei Nutzung des Gemeinsamen Ordners bei VM
-- Backupprozess mit Skript funktionsfähig (behält Rechte etc.)
-- Problem bezüglich \r gelöst (Windows -> Ubuntu Codierungsproblem!)
+- Backupprozess mit Skript funktionsfÃ¤hig (behÃ¤lt Rechte etc.)
+- Problem bezÃ¼glich \r gelÃ¶st (Windows -> Ubuntu Codierungsproblem!)
 
 19.04.2017
 
-- Rsync Backup mit 'cp -a' in einen Ordner für ältere Backups kopieren oder mittels 'tar' archivieren?
+- Rsync Backup mit 'cp -a' in einen Ordner fÃ¼r Ã¤ltere Backups kopieren oder mittels 'tar' archivieren?
 - Mittels 'apt-get -u upgrade' werden alle Pakete aufgelistet welche aktualisiert werden
-- Protokoll Dateien sollten in '/var/log/dist-upgrade' liegen, nach Upgrade öffnen?
-- Seperates Skript für Vollbackup? (Alle 4 Wochen Kopie von Inkrementellem Backup?)
+- Protokoll Dateien sollten in '/var/log/dist-upgrade' liegen, nach Upgrade Ã¶ffnen?
+- Seperates Skript fÃ¼r Vollbackup? (Alle 4 Wochen Kopie von Inkrementellem Backup?)
 - Welcher Backupprozess bevorzugt? 'tar' oder 'rsync'?
 
 26.04.2017
 
 - Mittels 'tar' Backup Verzeichnis in Backup_ALT Verzeichnis (Monatlich)
-- Durchzählen der Backups und dann Entfernen sobald 5 erreicht wurden (Monatlich, Wöchentlich ist besser)
+- DurchzÃ¤hlen der Backups und dann Entfernen sobald 5 erreicht wurden (Monatlich, WÃ¶chentlich ist besser)
 - Momentaner Stand ist: Ein Backup im Monat und ein Backup pro Woche
-- Public Key war noch nicht hinterlegt, wurde hinterlegt für Bastian Schöttker und Jonas Einsele (Externer Kartenleser -> Uebertragung des Public-Key)
-- Internetzugang manchmal möglicher
-- Ändern der Exclude Anweisung des Wöchentlichen Backup Scripts
+- Public Key war noch nicht hinterlegt, wurde hinterlegt fÃ¼r Bastian SchÃ¶ttker und Jonas Einsele (Externer Kartenleser -> Uebertragung des Public-Key)
+- Internetzugang manchmal mÃ¶glicher
+- Ã„ndern der Exclude Anweisung des WÃ¶chentlichen Backup Scripts
 
 03.05.2017
 
 - Durch Aufruf von 'unattended-upgrade' werden lediglich Sicherheitsupdates installiert
-- 'unattended-upgrade --dry-run -d' überprüft auf Verfügbarkeit installiert aber keine Updates
-- if-Schleife für Backup Prozess (Untersuchung von "InstCount=0 DelCount=0 BrokenCount0") + grep verwenden?
-- Fehler nach Hinzufügen von Aufruf (Zeile 19: [: Fehlende >>]<<)
-- Fehler war weil die Überprüfung der Backupverzeichnisse inkorrekt war (Muss bei BananaPi Skripten geändert werden)
+- 'unattended-upgrade --dry-run -d' Ã¼berprÃ¼ft auf VerfÃ¼gbarkeit installiert aber keine Updates
+- if-Schleife fÃ¼r Backup Prozess (Untersuchung von "InstCount=0 DelCount=0 BrokenCount0") + grep verwenden?
+- Fehler nach HinzufÃ¼gen von Aufruf (Zeile 19: [: Fehlende >>]<<)
+- Fehler war weil die Ã¼berprÃ¼fung der Backupverzeichnisse inkorrekt war (Muss bei BananaPi Skripten geÃ¤ndert werden)
 Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Logdateien werden im Verzeichnis /var/log/unattended-upgrades/ gespeichert
-- Monatliches Update überprüft nun auf neue Dateien
-- Wöchentliches Update überprüft nun ob Sicherheitsupdates vorhanden sind und installiert diese mit anschließendem Backup
+- Monatliches Update Ã¼berprÃ¼ft nun auf neue Dateien
+- WÃ¶chentliches Update Ã¼berprÃ¼ft nun ob Sicherheitsupdates vorhanden sind und installiert diese mit anschlieÃŸendem Backup
