@@ -1,0 +1,36 @@
+DynDNS eingerichtet:
+bananapihfu.ddns.net für Bananian
+
+Login: Bananapihfu 
+PW: BananenTelefon (Englisch)
+
+
+Konfiguration:
+noip Client war vorinstalliert -> Umkonfiguration
+
+
+root@bananapi ~/DDNS/noip-2.1.9-1 # /usr/local/bin/noip2 -C
+
+Auto configuration for Linux client of no-ip.com.
+
+Multiple network devices have been detected.
+
+Please select the Internet interface from this list.
+
+By typing the number associated with it.
+0       eth0.101
+1       eth0.201
+2       eth0.202
+
+0
+
+Please enter the login/email string for no-ip.com  bananapihfu
+Please enter the password for user 'bananapihfu'  ***********
+
+Only one host [bananapihfu.ddns.net] is registered to this account.
+It will be used.
+Please enter an update interval:[30]  30
+Do you wish to run something at successful update?[N] (y/N)  N
+
+New configuration file '/usr/local/etc/no-ip2.conf' created.
+
