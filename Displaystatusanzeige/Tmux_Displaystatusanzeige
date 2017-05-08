@@ -1,0 +1,17 @@
+#!/bin/bash
+
+### Aufbau des Terminals ###
+
+tmux new-session -s 'BananaPi' -d
+tmux split-window -v -t 'BananaPi'
+tmux send-keys "iftop" 
+tmux send-keys Enter
+tmux split-window -h -t 'BananaPi'
+tmux send-keys "iotop" 
+tmux send-keys Enter
+tmux split-window -h -t 'BananaPi'
+tmux send-keys "htop" 
+tmux send-keys Enter
+tmux attach -t 'BananaPi'
+
+exit 0

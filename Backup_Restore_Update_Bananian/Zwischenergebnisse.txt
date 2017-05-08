@@ -53,3 +53,19 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Logdateien werden im Verzeichnis /var/log/unattended-upgrades/ gespeichert
 - Monatliches Update überprüft nun auf neue Dateien
 - Wöchentliches Update überprüft nun ob Sicherheitsupdates vorhanden sind und installiert diese mit anschließendem Backup
+- Restore Skript anfertigen?
+- Erweiterung der Ausnahmenregelung beim Wöchentlichen Backup "/var/lib/ntp/ntp.drift"
+
+08.05.2017
+
+- Befehle / Programme zur Implementation der Displaystatusanzeige: Terminator (Splitten der Anzeige auf mehrere Terminals); Screen / Tmux (Splitten der Anzeige und Sitzungen); Netdata (Überwachung der Serverumgebung); top, htop, iftop, iotop (Systemauslastung bestimmter Bereiche anzeigen)
+- 'top' ist Standard bei Debian
+- 'htop' bietet umfangreiches Display und Optionen
+- 'iftop' zeigt Netzwerkinterfaces und deren eingehende und ausgehende Kommunikationen
+- 'iotop' ähnelt einem Taskmanager (zeigt Ressourcennutzung)
+- Fokus bei der Implementierung auf 'Tmux' da dieses am einfachsten zu verwenden ist
+- Anwenden der Aufrufe am BananaPi erfolgreich
+- Implementation mittels Bashskript welches zum Systemstart ausgeführt wird
+- Splitten des Terminals mittels 'xbindkeys' oder 'xdotool' (vielleicht 'tmux send-keys'?)
+- Sessions können gespeichert werden, aber werden zum Neustart wieder gelöscht
+- Aufrufe 'tmux split-window -v' (Vertikal) und tmux 'split-window -h' (Horizontal)

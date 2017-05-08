@@ -48,7 +48,7 @@ echo "Woechentliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrech
 sleep 10
 
 ### Nun wird das eigentliche Backup ausgefuehrt ##
-rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / ${BACKUPDIR}
+rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/var/lib/ntp/ntp.drift"} / ${BACKUPDIR}
 
 
 ### Abfragen ob das Backup erfolgreich war ##
