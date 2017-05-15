@@ -5,3 +5,4 @@
 - Mounten der hinterlegten SSD und überprüfen auf Fehler mittels SMART Test
 - -> SSD nicht erkannt, viele IO Fehler - DEFEKT?
 - Mailserver auf Armbian eingerichtet
+- Samba auf Armbian eingerichtet
