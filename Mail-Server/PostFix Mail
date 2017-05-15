@@ -3,7 +3,7 @@ http://my5cent.spdns.de/allgemein/banana-pi-postfix-installieren-und-einrichten.
 Account bei gmail einrichten für abruf der vom BananaPi gesendeten Mails.
 
 Mail: bananapihfu@gmail.com
-Passwort: "A8AF8DyfH%s4aGpxy%mPREGgn*&pB7" (ohne Anführungszeichen)
+Passwort: "" (ohne Anführungszeichen) Siehe Gruppe
 
 Postfix Installieren:
 apt-get install postfix libsasl2-modules bsd-mailx
@@ -30,17 +30,17 @@ smtp_tls_security_level = may
 Nutzername und Passwort hinterlegen:
 nano /etc/postfix/sasl_password
 
-smtp.gmail.com Bananapihfu:A8AF8DyfH%s4aGpxy%mPREGgn*&pB7
+smtp.gmail.com Bananapihfu:
 
 
 Datei nur für root lesbar machen, da klartext:
 chmod 600 /etc/postfix/sasl_password 
 
 Postfix lookup tabelle erstellen:
-hash:/etc/postfix/sasl_password
+postmap hash:/etc/postfix/sasl_password
 
 Postfix neustarten:
-/etc/init.d/postfixrestart
+/etc/init.d/postfix restart
 
 Für weiterleitung der Systemnachrichten aliases bearbeiten:
 nano /etc/aliases
