@@ -1,0 +1,43 @@
+https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20%28Command-line%20interface/Linux%20Terminal%29%20-%20Uncomplicated%2C%20Simple%20and%20Brief%20Way%21
+
+Repository updaten und Samba installieren:
+sudo apt-get update
+sudo apt-get install samba
+
+Benutzer für Samba erstellen:
+useradd sambausr --shell /bin/false
+
+Passwort für den Benutzer in Samba setzen:
+smbpasswd -a <user_name>
+
+Verzeichniss im Homer erstellen:
+mkdir /home/sambausr
+mkdir /home/sambausr/samba
+
+Berechtigungen setzen:
+chown sambausr:sambausr /home/sambausr/
+chown sambausr:sambausr /home/sambausr/samba/
+
+Backup der Samba config machen:
+cp /etc/samba/smb.conf ~
+
+Config bearbeiten:
+nano /etc/samba/smb.conf
+
+folgendes Einfügen:
+[samba]
+path = /home/sambausr/samba
+valid users = sambausr
+read only = no
+
+Service neustarten:
+service smbd restart
+
+Config testen:
+testparm
+
+Verbinden:
+\\<IP>\samba
+
+
+
