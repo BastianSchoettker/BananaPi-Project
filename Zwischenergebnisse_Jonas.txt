@@ -3,3 +3,5 @@
 - dpkg-reconfigure keyboard-configuration (Tastaturlayout umstellen von Englisch auf Deutsch) 
 - service -keyboard-setup restart (Neustart damit Änderungen übernommen werden)
 - Mounten der hinterlegten SSD und überprüfen auf Fehler mittels SMART Test
+- -> SSD nicht erkannt, viele IO Fehler - DEFEKT?
+- Mailserver auf Armbian eingerichtet
