@@ -69,3 +69,10 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Splitten des Terminals mittels 'xbindkeys' oder 'xdotool' (vielleicht 'tmux send-keys'?)
 - Sessions können gespeichert werden, aber werden zum Neustart wieder gelöscht
 - Aufrufe 'tmux split-window -v' (Vertikal) und tmux 'split-window -h' (Horizontal)
+
+15.05.2017
+
+- Setup WinSCP und Putty zum Zugriff auf Armbian
+- Hinterlegung des Displaystatusanzeige Tmux und Backup Skripte in Armbian
+- SSD (ADATA 64GB Premier Pro SP600) höchstwahrscheinlich defekt, da fehlerhafte Anzeige des Volumens
+- Statusanzeigen auf 'htop' und 'iftop' reduzieren?
