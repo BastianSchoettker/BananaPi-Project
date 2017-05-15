@@ -75,4 +75,6 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Setup WinSCP und Putty zum Zugriff auf Armbian
 - Hinterlegung des Displaystatusanzeige Tmux und Backup Skripte in Armbian
 - SSD (ADATA 64GB Premier Pro SP600) höchstwahrscheinlich defekt, da fehlerhafte Anzeige des Volumens
+- Installation von 'htop', 'iotop', 'iftop' und Tmux
 - Statusanzeigen auf 'htop' und 'iftop' reduzieren?
+- Beginn der Dokumentation (Backup und Wiederherstellung)
