@@ -1,1 +1,1 @@
-﻿
+﻿CoovaChilli als Access Controler auf dem ARMbian installieren, das am Besten über einen Apache Webserver (auch auf dem ARMbian BananaPi) läuft
