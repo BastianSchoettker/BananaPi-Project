@@ -78,3 +78,9 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Installation von 'htop', 'iotop', 'iftop' und Tmux
 - Statusanzeigen auf 'htop' und 'iftop' reduzieren?
 - Beginn der Dokumentation (Backup und Wiederherstellung)
+
+22.05.2017
+
+- Dokumentation überarbeitet (Kapitelunterteilung und Formulierung zu "Backup und Wiederherstellung")
+- Bilder zur Dokumentation angelegt
+- Tmux Skript auf 'htop' und 'iftop' reduziert
