@@ -6,3 +6,8 @@
 - -> SSD nicht erkannt, viele IO Fehler - DEFEKT?
 - Mailserver auf Armbian eingerichtet
 - Samba auf Armbian eingerichtet
+
+22.05.2017
+
+- DyDNS ersatz mit ddclient -> Dynamische Domain mit eigener Domain
+-> Vorteil: Muss nicht alle 30 Tage bestätigt werden wie bei NoIP.com
