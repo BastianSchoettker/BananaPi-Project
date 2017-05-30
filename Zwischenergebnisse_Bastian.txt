@@ -84,3 +84,9 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 - Dokumentation überarbeitet (Kapitelunterteilung und Formulierung zu "Backup und Wiederherstellung")
 - Bilder zur Dokumentation angelegt
 - Tmux Skript auf 'htop' und 'iftop' reduziert
+
+30.05.2017
+
+- Backup von Armbian durchgeführt (Wöchentlich + Monatlich)
+- Tmux und Backup Skripte implementiert
+- Tmux Session wird zum Systemstart ausgeführt jedoch muss die Session manuell nach dem Login geöffnet werden
