@@ -89,4 +89,4 @@ Zeile 19:	if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
 
 - Backup von Armbian durchgeführt (Wöchentlich + Monatlich)
 - Tmux und Backup Skripte implementiert
-- Tmux Session wird zum Systemstart ausgeführt jedoch muss die Session manuell nach dem Login geöffnet werden
+- Tmux Session wird zum Systemstart ausgeführt jedoch muss die Session manuell nach dem Login geöffnet werden (Aufruf 'tmux attach')
