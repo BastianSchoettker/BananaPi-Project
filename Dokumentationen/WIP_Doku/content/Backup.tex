@@ -5,7 +5,7 @@ Um die Implementationen und Konfigurationen des Pi's abzusichern, wird eine Back
 'FauBackup' und 'gitbac' bieten hierbei eine Lösung mittels externer Programme an. Debian bietet jedoch bereits standardmäßig einige Aufrufe welche zur Anlegung von Backups verwendet werden können. Diese wurden im Folgenden in Ubuntu anhand eines Bash Skripts zur Automatisierung getestet und implementiert.\\
 
 \subsection{dd}
-Als erste Ausführung wurde der Aufruf 'dd' verwendet. Hierbei wird der Inhalt der gesamten SD Karte als Image Datei abgespeichert.\\
+Als erste Ausführung wurde der Aufruf 'dd' verwendet. Hierbei wird der Inhalt der gesamten SD Karte als Image Datei abgespeichert.
 
 \subsubsection*{1.}
 Übersicht der vorhandenen Dateisysteme mittels des Terminalaufrufs 'df'\\
@@ -53,10 +53,12 @@ rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/
 \end{lstlisting}
 \begin{tabular}{l c l}
 rsync	&->& Kopieren der Dateien\\
--aAX	&->& Übertragung im Archiv Modus wodurch alle symbolischen Verweise beibehalten werden\\
---delete&->& Dateien die im Ursprungsverzeichnis nicht mehr existieren werden im Zielverzeichnis ebenfalls gelöscht\\
+-aAX	&->& Übertragung im Archiv Modus wodurch alle symbolischen Verweise\\
+	&  & beibehalten werden\\
+--delete&->& Dateien die im Ursprungsverzeichnis nicht mehr existieren werden\\
+	&  & im Zielverzeichnis ebenfalls gelöscht\\
 --exclude&->& Dateien werden ausgelassen\\
-\end{tabular}
+\end{tabular}\\\\
 Wiederherstellen des Rsync Backups durch folgenden Befehl:
 \begin{lstlisting}
 rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/lost+found,/home/*}
