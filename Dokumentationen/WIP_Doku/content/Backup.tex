@@ -7,13 +7,14 @@ Um die Implementationen und Konfigurationen des Pi's abzusichern, wird eine Back
 \subsection{dd}
 Als erste Ausführung wurde der Aufruf 'dd' verwendet. Hierbei wird der Inhalt der gesamten SD Karte als Image Datei abgespeichert.
 
-\subsubsection*{1.}
+\subsubsection*{Schritt 1:}
 Übersicht der vorhandenen Dateisysteme mittels des Terminalaufrufs 'df'\\
 \begin{figure}[ht]
 \includegraphics[width=.8\textwidth]{pictures/Bastian/BILD1_df}
+\caption{Vorhandene Dateisysteme}
 \end{figure}
 
-\subsubsection*{2.}
+\subsubsection*{Schritt 2:}
 Terminalaufruf für den Backupprozess
 \lstset{language=bash,numbers=none,frame=single}
 \begin{lstlisting}
@@ -27,22 +28,23 @@ of=FILE & -> & Die Output Datei welche angelegt wird\\
 \end{tabular}
 \newpage %==============================================
 
-\subsubsection*{3.}
+\subsubsection*{Schritt 3:}
 Optionale Nutzung von Terminalaufruf 'pv' um den Fortschritt des Backup Prozesses zu sehen Die mögliche Restzeit lässt sich nur durch das Hinterlegen der Größe der Partition anzeigen.
 \begin{lstlisting}
 sudo dd if=INPUTPARTITION |pv| sudo dd of=OUTPUTFILE
 \end{lstlisting}
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{pictures/Bastian/BILD2_pv}
+\caption{Laufender Backupprozess mit Statusanzeige}
 \end{figure}
-
-\subsubsection*{4.}
+\subsubsection*{Schritt 4:}
 Wiederherstellen eines hinterlegten Backups läuft ähnlich wie der ursprüngliche Prozess ab.
 \begin{lstlisting}
 sudo dd if=OUTPUTFILE |pv| of=INPUTPARTITION
 \end{lstlisting}
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{pictures/Bastian/BILD3_pv}
+\caption{Laufender Wiederherstellungsprozess mit Statusanzeige}
 \end{figure}
 \newpage %==============================================
 
@@ -94,6 +96,7 @@ Durch ablegen des Skripts in eines der entsprechenden Verzeichnisse wird der Pro
 \end{tabular}
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{pictures/Bastian/Woechentliches_Backup}
+\caption{Ausführung wöchentliches Backup}
 \end{figure}
 
 
