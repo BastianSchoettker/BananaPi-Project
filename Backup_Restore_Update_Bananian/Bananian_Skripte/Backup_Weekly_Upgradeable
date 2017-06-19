@@ -4,8 +4,8 @@
 ### Einstellungen ##
 BACKUPDIR="/mnt/SSD/Backup_Weekly/"        	## Pfad zum woechentlichen Backupverzeichnis
 BACKUPOLDDIR="/mnt/SSD/Backup_Monthly/" 	## Pfad zum monatlichen Backupverzeichnis
-DATUM="$(date +%d-%m-%Y)"          	 	## Datumsformat einstellen
-ZEIT="$(date +%H:%M)"              		## Zeitformat einstellen
+DATUM="$(date +%d-%m-%Y)"          	 		## Datumsformat einstellen
+ZEIT="$(date +%H:%M)"              			## Zeitformat einstellen
 
 ### Wechsel in root damit die Pfade stimmen ##
 cd /
@@ -32,9 +32,9 @@ cd /mnt/SSD/Backup_Weekly/
 
 unattended-upgrade --dry-run -d > security_update.log
 
-### Ausfuehren des Backupprozesses wenn Installationen vorhanden sind ##
+### Ausfuehren des Backupprozesses wenn Installationen vorhanden sind / grep liefert bei Erfüllen der Bedingung False statt True zurueck ##
 
-if ( grep -Fxq "InstCount=0" security_update.log ) ; then
+if !( grep -Fxq "InstCount=0" security_update.log ) ; then
 
 ### Update der Sicherheitspakete ##
 apt-get clean
@@ -73,7 +73,7 @@ fi
 ### Ende Backup Prozess ##
 fi
 
-### Loeschen der Security Log Datei ##
+### Loeschen der Security Log Datei - OPTIONAL ##
 
 ##rm security_update.log
 
