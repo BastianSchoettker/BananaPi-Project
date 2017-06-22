@@ -9,3 +9,37 @@ Wlan verbinden
 SSH Verbinden
 DynDNS aktualisieren
 Domain verwalten
+
+4.1 Pi Hoch- und Herunterfahren
+-richiger Steckplatz
+
+4.2 Verbindung über SSH
+-putty/terminal
+
+4.3 Lan, Wlan und Vlans
+- Übersicht Ports + Vlan wie Vorgängergruppe
+- Zugansdaten Wlan
+
+4.4 Samba
+4.4.1 Verbinden mit Share
+- Windows
+- Linux
+- Macintosh
+4.4.2 Einrichten neuer Shares
+
+4.5 Mailserver
+-Zugangsdaten
+-Zieladresse in Aliases
+
+4.6 Domainverwaltung
+-Zugangsdaten
+
+4.7 Backup + Restore
+-manuelles Backup
+-manueller Restore
+
+4.8 Statusanzeige
+-starten/beenden
+
+4.9 Radius?
+
