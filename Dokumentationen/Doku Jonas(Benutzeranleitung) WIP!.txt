@@ -1,0 +1,11 @@
+Benutzeranleitung:
+Skripte starten (Backup)
+Bild Vlans
+Was alles möglich ist
+Samba verbinden
+Mailserver lesen
+Vlans
+Wlan verbinden
+SSH Verbinden
+DynDNS aktualisieren
+Domain verwalten
