@@ -13,19 +13,19 @@ Vorraussetzungen:
 - SSH/Physikalischen Zugriff
 
 
-PostFix installieren:
+1. PostFix installieren:
 apt-get update
 apt-get install postfix libsasl2-modules bsd-mailx
 
-Das Konfigurationsfenster öffnet sich:
+2. Das Konfigurationsfenster öffnet sich:
 	Internet mit Smarthost
 	Mailname: smtp.gmail.com
 	Hostname: bananapi
 
-TLS/SSL aktivieren:
+3. TLS/SSL aktivieren:
 nano /etc/postfix/main.cf
 
-Folgendes Einfügen:
+3.1 Folgendes Einfügen:
 smtp_sasl_auth_enable = yes
 # noplaintext weglassen, wenn Passwörter im Klartext übertragen werden müssen:
 # (nicht empfohlen, nur wenn's anders nicht funktioniert)
@@ -34,24 +34,24 @@ smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
 # verschluesselung einschalten
 smtp_tls_security_level = may
 
-Nutzerdaten des GoogleMail-Kontos hinterlegen:
+4. Nutzerdaten des GoogleMail-Kontos hinterlegen:
 nano /etc/postfix/sasl_password
 smtp.gmail.com Bananapihfu:<Password>
 
-Datei nur für root lesbar machen, da klartext:
+5. Datei nur für root lesbar machen, da klartext:
 chmod 600 /etc/postfix/sasl_password 
 
-Postfix lookup tabelle erstellen:
+6. Postfix lookup tabelle erstellen:
 postmap hash:/etc/postfix/sasl_password
 
-Postfix neustarten:
+7. Postfix neustarten:
 /etc/init.d/postfix restart
 
-Für Weiterleitung der Systemnachrichten aliases bearbeiten:
+8. Für Weiterleitung der Systemnachrichten aliases bearbeiten:
 nano /etc/aliases 
 root: bananapihfu@gmail.com //Oder Wunschemail an welche Systemnachrichten gesendet werden
 
-Änderungen an Aliases wirksam machen:
+9. Änderungen an Aliases wirksam machen:
 Newaliases
 
 Quelle: 
@@ -69,45 +69,41 @@ Vorraussetzungen:
 - Texteditor (Nano)
 - SSH/Physikalischen Zugriff
 
-Samba installieren:
+1. Samba installieren:
 sudo apt-get update
 sudo apt-get install samba
 
-Benutzer für Samba erstellen (Hat keinen Shell-Zugriff):
+2. Benutzer für Samba erstellen (Hat keinen Shell-Zugriff):
 useradd sambausr --shell /bin/false
 
-Passwort für den Benutzer in Samba setzen:
+3. Passwort für den Benutzer in Samba setzen:
 smbpasswd -a <user_name>
 
-Verzeichniss im Homer erstellen:
-Bei einem anderen Verzeichniss muss die smb.conf auch angepasst werden!
+4. Verzeichniss im Homer erstellen:
 mkdir /home/sambausr
 mkdir /home/sambausr/samba
 
-Berechtigungen setzen:
+5. Berechtigungen setzen:
 chown sambausr:sambausr /home/sambausr/
 chown sambausr:sambausr /home/sambausr/samba/
 
-Backup der Samba Konfiguration im home-Verzeichniss machen:
+6. Backup der Samba Konfiguration im home-Verzeichniss machen:
 cp /etc/samba/smb.conf ~
 
-Config bearbeiten:
+7. Config bearbeiten:
 nano /etc/samba/smb.conf
 
-folgendes am Ende der Konfiguration Einfügen:
+7.1 folgendes am Ende der Konfiguration Einfügen:
 [samba]
 path = /home/sambausr/samba
 valid users = sambausr
 read only = no
 
-Service neustarten:
+8. Service neustarten:
 service smbd restart
 
-Config testen:
+9. Config testen:
 testparm
-
-Verbinden:
-\\<IP>\samba
 
 Quelle: https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20%28Command-line%20interface/Linux%20Terminal%29%20-%20Uncomplicated%2C%20Simple%20and%20Brief%20Way%21#About_This_Guide
  
@@ -126,26 +122,27 @@ Vorraussetzungen:
 - SSH/Physikalischen Zugriff
 - NoIP.com Account
 
-NoIP Hostnamen anlegen:
+1. NoIP Hostnamen anlegen:
 Man muss in No-IP den gewünschten Hostnamen einrichten, welcher später auf die aktuelle IP-Adresse verweist.
+<BILD: noip Domain.jpg>
 
-Verzeichniss für DDNS im Home-Verzeichniss erstellen und wechseln:
+2. Verzeichniss für DDNS im Home-Verzeichniss erstellen und wechseln:
 mkdir DDNS
 cd DDNS
 
-NoIP-Client von NoIP.com beziehen:
+3. NoIP-Client von NoIP.com beziehen:
 wget https://www.noip.com/client/linux/noip-duc-linux.tar.gz
 
-Das Archiv entpacken:
+4. Das Archiv entpacken:
 tar xvf noip-duc-linux.tar.gz
 
-In den Entpackten Ordner wechseln:
+5. In den Entpackten Ordner wechseln:
 cd noip-x.x.x-x (cd noip eingeben und mit TAB vervollständigen)
 
-Client bauen und installieren:
+6. Client bauen und installieren:
 make && make install
 
-Konfiguration wird gestartet:
+7. Konfiguration wird gestartet:
 Auto configuration for Linux client of no-ip.com.
 
 Multiple network devices have been detected.
@@ -169,14 +166,16 @@ Do you wish to run something at successful update?[N] (y/N)  N
 
 New configuration file '/usr/local/etc/no-ip2.conf' created.
 
+
+
 Um den Daemon automatisch bei Systemstart zu starten muss noch folgende Konfiguration vorgenommen werden:
-Start-Scipt unter /etc/init.d/noip2 ablegen:
+1. Start-Scipt unter /etc/init.d/noip2 ablegen:
 vim /etc/init.d/noip2
 
-Script "noip2" kopieren und einfügen:
-Siehe Anhang
+2. Script "noip2" kopieren und einfügen:
+Verweis auf Anhang
 
-Script ausführbar machen:
+3. Script ausführbar machen:
 chmod a+rx /etc/init.d/noip2
 
 Quelle: https://www.togaware.com/linux/survivor/No_IP_Manual.html
@@ -185,12 +184,80 @@ Quelle: https://www.togaware.com/linux/survivor/No_IP_Manual.html
 Vorraussetzungen:
 - Account bei Cloudflare
 
-Domain bei Freenom.com aussuchen:
+1. Domain bei Freenom.com aussuchen:
 Hier gibt es jede Menge kostenfreie Domains
 
-Domain registrieren
+2. Wunsch-Domain registrieren
+<BILD: freenom Domain.jpg>
+3. Nameserver bei Freenom ändern:
+Um die Domain bei Cloudflare zu verwalten, müssen die Nameserver angepasst werden.
+Diese erhält man, wenn man sich bei Cloudflare anmeldet.
+<BILD: freenom Nameserver.jpg>
+
+3. CNAME weiterleitung auf no-ip einrichten
+<BILD: Cloudflare DNS.jpg>
 
 
+
+
+
+
+
+
+
+
+Anhang: noip2-Script
+#! /bin/sh
+# /etc/init.d/noip2
+
+# Supplied by no-ip.com
+# Modified for Debian GNU/Linux by Eivind L. Rygge <eivind@rygge.org>
+# Updated by David Courtney to not use pidfile 130130 for Debian 6.
+# Updated again by David Courtney to "LSBize" the script for Debian 7.
+
+### BEGIN INIT INFO
+# Provides:     noip2
+# Required-Start: networking
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start noip2 at boot time
+# Description: Start noip2 at boot time
+### END INIT INFO
+
+# . /etc/rc.d/init.d/functions  # uncomment/modify for your killproc
+
+DAEMON=/usr/local/bin/noip2
+NAME=noip2
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+    start)
+    echo -n "Starting dynamic address update: "
+    start-stop-daemon --start --exec $DAEMON
+    echo "noip2."
+    ;;
+    stop)
+    echo -n "Shutting down dynamic address update:"
+    start-stop-daemon --stop --oknodo --retry 30 --exec $DAEMON
+    echo "noip2."
+    ;;
+
+    restart)
+    echo -n "Restarting dynamic address update: "
+    start-stop-daemon --stop --oknodo --retry 30 --exec $DAEMON
+    start-stop-daemon --start --exec $DAEMON
+    echo "noip2."
+    ;;
+
+    *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+exit 0
 
 
 
