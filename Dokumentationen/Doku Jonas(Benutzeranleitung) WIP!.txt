@@ -36,10 +36,14 @@ Domain verwalten
 
 4.7 Backup + Restore
 -manuelles Backup
+in cron.weekly /cron.monthly sind die Scripts
+Auführen mit bash name Script
 -manueller Restore
+siehe Kapitel bastian
 
 4.8 Statusanzeige
 -starten/beenden
+tmux attach
 
 4.9 Radius?
 
