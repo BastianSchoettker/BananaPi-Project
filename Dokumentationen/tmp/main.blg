@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: title.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: abbreviations.aux
+A level-1 auxiliary file: Projektuebersicht.aux
+A level-1 auxiliary file: Betriebssysteme.aux
+A level-1 auxiliary file: Backup.aux
+A level-1 auxiliary file: Update.aux
+A level-1 auxiliary file: Display.aux
+A level-1 auxiliary file: Implementierungen.aux
+A level-1 auxiliary file: Betriebsanleitung.aux
+A level-1 auxiliary file: Lerneffekt.aux
+A level-1 auxiliary file: Ausblick.aux
+The style file: plain.bst
+A level-1 auxiliary file: affirmation.aux
+Database file #1: bibtex.bib
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            517 strings with 4504 characters,
+and the built_in function-call counts, 325 in all, are:
+= -- 30
+> -- 13
+< -- 1
++ -- 5
+- -- 4
+* -- 17
+:= -- 59
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 16
+empty$ -- 23
+format.name$ -- 4
+if$ -- 69
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 6
+preamble$ -- 1
+purify$ -- 4
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 9
+swap$ -- 6
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 3
+width$ -- 2
+write$ -- 13

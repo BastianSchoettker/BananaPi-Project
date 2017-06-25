@@ -6,7 +6,4 @@ main: main.tex
 	pdflatex main.tex
 	pdflatex main.tex
 	mv main.pdf ../Doku.pdf
-	rm -r *
-	cp -r ../tmp/* ../content
-	rm -r ../tmp
 
