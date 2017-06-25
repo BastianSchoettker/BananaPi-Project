@@ -33,7 +33,7 @@ Einsatz. Es unterstützt den meistverbreiteten Authentifizierungsstandard EAP, a
 heutzutage unter anderem in den Sicherheitsimplementationen WPA und WPA2 Verwendung
 finden.\\
 ~\\
-Instalation:\\
+Installation:\\
 FreeRADIUS ist auch in den offiziellen Paket-Quellen von Debian enthalten und kann somit ganz
 einfach über den Debian-Paketmanager apt-get installiert werden. Als erstes stellen wir sicher dass
 das System up-to-date ist und die aktuellen Paketquellen besitzt. \cite{rad4}
@@ -73,10 +73,10 @@ Testen:\\
 Um die Konfiguration zu überprüfen kann der RADIUS-Server im Debugging-Modus gestartet
 werden. Dazu sollte der RADIUS-Dienst erst beendet werden:
 \begin{lstlisting}
-ervice freeradius stop
+service freeradius stop
 freeradius -X
 \end{lstlisting}
-nach kann in einem zweiten Terminal (oder ggf. mit Terminal-Multiplexer) das Programm radtest
+Danach kann in einem zweiten Terminal (oder ggf. mit Terminal-Multiplexer) das Programm radtest
 verwendet werden um Authentifizierungsanfragen an den RADIUS-Server zu senden: \cite{rad6}
 \begin{lstlisting}
 radtest USERNAME PASSWORD 127.0.0.1 0 mysecret
