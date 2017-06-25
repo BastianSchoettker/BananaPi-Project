@@ -45,32 +45,11 @@ make && make install
 \end{lstlisting}
 ~\\
 7. Konfiguration wird gestartet:
-\begin{lstlisting}
-Auto configuration for Linux client of no-ip.com.
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{pictures/Jonas/noip_Konfiguration}
+\caption{noip Konfiguration}
+\end{figure}
 
-Multiple network devices have been detected.
-
-Please select the Internet interface from this list.
-
-By typing the number associated with it.
-0       eth0.101
-1       eth0.201
-2       eth0.202
-\end{lstlisting}
-
-0
-\begin{lstlisting}
-
-Please enter the login/email string for no-ip.com  bananapihfu
-Please enter the password for user 'bananapihfu'  ***********
-
-Only one host [armbianhfu.ddns.net] is registered to this account.
-It will be used.
-Please enter an update interval:[30]  30
-Do you wish to run something at successful update?[N] (y/N)  N
-
-New configuration file '/usr/local/etc/no-ip2.conf' created.
-\end{lstlisting}
 ~\\
 Um den Daemon automatisch bei Systemstart zu starten muss noch folgende Konfiguration vorgenommen werden:\\
 1. Startscript unter /etc/init.d/noip2 ablegen:
