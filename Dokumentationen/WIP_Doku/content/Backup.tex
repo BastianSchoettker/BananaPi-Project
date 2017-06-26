@@ -2,15 +2,15 @@
 
 Um die Implementationen und Konfigurationen des Pi's abzusichern, wird eine Backup Lösung eingesetzt. Die Sicherung relevanter Daten soll hierbei einem möglichen Defekt oder Inkompatibilität durch Updates o.ä. entgegenwirken.\\
 \\
-'FauBackup' und 'gitbac' bieten hierbei eine Lösung mittels externer Programme an. Debian bietet jedoch bereits standardmäßig einige Aufrufe welche zur Anlegung von Backups verwendet werden können. Diese wurden im Folgenden in Ubuntu anhand eines Bash Skripts zur Automatisierung getestet und implementiert.\\
+'FauBackup' und 'gitbac' bieten hierbei eine Lösung mittels externer Programme an. Debian bietet jedoch bereits standardmäßig einige Aufrufe welche zur Anlegung von Backups verwendet werden können. Diese wurden im Folgenden in Ubuntu anhand eines Bash Skripts zur Automatisierung getestet und implementiert.
 
 \subsection{dd}
 Als erste Ausführung wurde der Aufruf 'dd' verwendet. Hierbei wird der Inhalt der gesamten SD Karte als Image Datei abgespeichert.
 
 \subsubsection*{Schritt 1:}
-Übersicht der vorhandenen Dateisysteme mittels des Terminalaufrufs 'df'\\
+Übersicht der vorhandenen Dateisysteme mittels des Terminalaufrufs 'df'
 \begin{figure}[ht]
-\includegraphics[width=.8\textwidth]{pictures/Bastian/BILD1_df}
+\includegraphics[width=\textwidth]{pictures/Bastian/BILD1_df}
 \caption{Vorhandene Dateisysteme}
 \end{figure}
 
