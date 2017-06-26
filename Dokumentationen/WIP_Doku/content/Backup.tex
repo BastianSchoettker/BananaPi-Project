@@ -46,7 +46,7 @@ sudo dd if=OUTPUTFILE |pv| of=INPUTPARTITION
 \includegraphics[width=\textwidth]{pictures/Bastian/BILD3_pv}
 \caption{Laufender Wiederherstellungsprozess mit Statusanzeige}
 \end{figure}
-Quelle: https://wiki.ubuntuusers.de/dd/ \cite{dd}
+Quelle: \cite{dd}
 \newpage %==============================================
 
 \subsection{rsync}
@@ -66,7 +66,7 @@ Wiederherstellen des Rsync Backups durch folgenden Befehl:
 \begin{lstlisting}
 rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/lost+found,/home/*}
 \end{lstlisting}
-Quelle: https://wiki.ubuntuusers.de/rsync/ \cite{rsync}
+Quelle: \cite{rsync}
 \subsection{tar} %===============================================================================
 Eine weitere Anwendungsmöglichkeit bietet die 'tar' Archivierung. Vorteil dieses Aufrufs ist, dass durch Angabe von Parametern die Berechtigungen aller zu sichernden Daten ebenfalls beibehalten werden und die Archivierung Speicherplatz spart.\\
 Wechsel in das Backupverzeichnis dann:
@@ -80,7 +80,7 @@ tar	&-> Archivieren von Daten\\
 -z	&-> Zusätzliche Komprimierung mit gzip\\
 -f	&-> Archiv in Datei schreiben (finish)\\
 \end{tabular}
- ~\\Quelle: https://wiki.ubuntuusers.de/tar/ \cite{tar}
+ ~\\Quelle: \cite{tar}
 
 \newpage %==============================================
 
@@ -90,8 +90,7 @@ Damit der Nutzer die Aufrufe nicht händisch zu bestimmten Zeiten ausführen mus
 Um das Zeitintervall der Backups einzustellen wird der 'Cron' Dienst verwendet.
 Hiermit können Skripte und Programme zu festgelegten Zeiten gestartet werden.
 Wenn ein hinterlegter Job täglich zu einer bestimmten Uhrzeit ausgeführt wird muss allerdings auch der Rechner zu dem Zeitpunkt aktiv sein. Ist dies nicht der Fall, startet der Prozess nicht. Um dies zu umgehen wird 'Anacron' verwendet.
-Durch ablegen des Skripts in eines der entsprechenden Verzeichnisse wird der Prozess entsprechend ausgeführt.\\
-Quelle: https://wiki.ubuntuusers.de/Cron/ \cite{cron} \\
+Durch ablegen des Skripts in eines der entsprechenden Verzeichnisse wird der Prozess entsprechend ausgeführt. \cite{cron} \\
 \begin{tabular}{l l}
 /etc/cron.hourly/	&- Stündlich ausführen\\
 /etc/cron.daily/	&- Täglich ausführen\\
