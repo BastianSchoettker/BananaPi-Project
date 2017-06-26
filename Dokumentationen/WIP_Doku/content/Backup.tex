@@ -1,3 +1,4 @@
+\chapter{Implementierung}
 \section{Backup und Wiederherstellung des Betriebssystems}
 
 Um die Implementationen und Konfigurationen des Pi's abzusichern, wird eine Backup Lösung eingesetzt. Die Sicherung relevanter Daten soll hierbei einem möglichen Defekt oder Inkompatibilität durch Updates o.ä. entgegenwirken.\\
@@ -13,6 +14,7 @@ Als erste Ausführung wurde der Aufruf 'dd' verwendet. Hierbei wird der Inhalt d
 \includegraphics[width=\textwidth]{pictures/Bastian/BILD1_df}
 \caption{Vorhandene Dateisysteme}
 \end{figure}
+\newpage %==============================================
 
 \subsubsection*{Schritt 2:}
 Terminalaufruf für den Backupprozess
@@ -26,7 +28,6 @@ dd	& -> & bit-genaues Kopieren der Dateien\\
 if=FILE	& -> & Die Datei oder Partition welche integriert wird\\
 of=FILE & -> & Die Output Datei welche angelegt wird\\
 \end{tabular}
-\newpage %==============================================
 
 \subsubsection*{Schritt 3:}
 Optionale Nutzung von Terminalaufruf 'pv' um den Fortschritt des Backup Prozesses zu sehen Die mögliche Restzeit lässt sich nur durch das Hinterlegen der Größe der Partition anzeigen.
