@@ -1,0 +1,123 @@
+\chapter{Backups}
+Wöchentliches Backup:
+\begin{lstlisting}
+#!/bin/bash
+# Script fuer inkrementelles Backup mittels rsync
+
+### Einstellungen ##
+BACKUPDIR="/mnt/SSD/Backup_Weekly/"    	## Pfad zum woechentlichen Backupverzeichnis
+BACKUPOLDDIR="/mnt/SSD/Backup_Monthly/" ## Pfad zum monatlichen Backupverzeichnis
+DATUM="$(date +%d-%m-%Y)" ## Datumsformat einstellen
+ZEIT="$(date +%H:%M)"     ## Zeitformat einstellen
+
+### Wechsel in root damit die Pfade stimmen ##
+cd /
+
+### Backupverzeichnisse anlegen ##
+mkdir -p ${BACKUPDIR}
+mkdir -p ${BACKUPOLDDIR}
+
+### Test ob Backupverzeichnis existiert und Mail an Admin bei fehlschlagen ##
+if [ ! -d "${BACKUPDIR}" -a "${BACKUPOLDDIR}" ]; then
+
+mail -s "Backupverzeichnisse nicht vorhanden!" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} konnte nicht erstellt werden. Das Verzeichnis ${BACKUPDIR} wurde nicht gefunden und konnte auch nicht angelegt werden.
+Mit freundlichem Gruss Backupscript
+EOM
+
+ . exit 1
+fi
+
+cd /mnt/SSD/Backup_Weekly/
+
+### Auf neue Sicherheitsupdates ueberpruefen und Verlauf speichern ##
+
+unattended-upgrade --dry-run -d > security_update.log
+
+### Ausfuehren des Backupprozesses wenn Installationen vorhanden sind ##
+
+if !( grep -Fxq "InstCount=0" security_update.log ) ; then
+
+### Update der Sicherheitspakete ##
+apt-get clean
+apt-get update
+unattended-upgrade -d
+
+### Nutzer auf Backupprozess hinweisen ##
+
+clear
+echo "Woechentliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+sleep 10
+
+### Nun wird das eigentliche Backup ausgefuehrt ##
+rsync -aAXv --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/var/lib/ntp/ntp.drift"} / ${BACKUPDIR}
+
+
+### Abfragen ob das Backup erfolgreich war ##
+if [ $? -ne 0 ]; then
+
+mail -s "Backup (${DATUM}) war fehlerhaft!" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} wurde mit Fehler(n) beendet.
+Mit freundlichem Gruss Backupscript
+EOM
+
+else
+
+mail -s "Backup (${DATUM}) war erfolgreich" root <<EOM
+Hallo Admin,
+das Backup am ${DATUM} wurde erfolgreich beendet.
+Mit freundlichem Gruss Backupscript
+EOM
+
+fi
+### Ende Backup Prozess ##
+fi
+### Loeschen der Security Log Datei - OPTIONAL ##
+##rm security_update.log
+exit 0
+\end{lstlisting}
+\newpage
+Monatliches Backup:
+\begin{lstlisting}
+#!/bin/bash
+
+### Wechsel in root damit die Pfade stimmen ##
+
+cd /
+
+### Archivieren und Kopieren des Backups in den Ordner Backups_ALT ###
+
+cd /mnt/SSD/Backup_Monthly
+
+touch -a /mnt/SSD/Backup.tar
+
+clear
+echo "Monatliches Backup wird ausgefuehrt. Diesen Vorgang bitte nicht abbrechen!"
+
+tar -cpvzf Backup.tar /mnt/SSD/Backup_Weekly
+
+echo "Monatliches Backup erfolgreich abgeschlossen."
+
+exit 0
+\end{lstlisting}
+
+\chapter{Tmux Displaystatusanzeige}
+
+\begin{lstlisting}
+#!/bin/bash
+
+### Aufbau des Terminals ###
+
+tmux new-session -s 'BananaPi' -d
+tmux split-window -v -t 'BananaPi'
+tmux send-keys "iftop" 
+tmux send-keys Enter
+tmux split-window -h -t 'BananaPi'
+tmux send-keys "htop" 
+tmux send-keys Enter
+tmux attach -t 'BananaPi'
+
+exit 0
+\end{lstlisting}
