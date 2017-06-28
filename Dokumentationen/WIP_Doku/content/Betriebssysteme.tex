@@ -1,12 +1,12 @@
 \chapter{Betriebssystemübersicht}
 
 Zu Begin des Projektes standen die beiden Betriebssysteme OpenWRT und Bananian zur Verfügung.
-Außerdem gab es den Vorschlag des VorgängerProjekts, zusätzlich das Projekt auch mit dem Betribssystem IPFire durchzuführen.
+Außerdem gab es den Vorschlag des Vorgängerprojekts, zusätzlich das Projekt auch mit dem Betribssystem IPFire durchzuführen.
 Die Nutzung der einzelnen Betriebssysteme fiel sehr unterschiedlich aus, da die implementierten Funkionen und der Stand der Entwicklung sich stark von System zu System unterschied.
 
 \section{OpenWRT}
 OpenWRT ist ein Betriebssystem, das für eingebettete Geräte wie Wlan Router enwickelt wurde.
-Das System wird übe ein Webinterface angepasst und unterscheidet sich stark zu den anderen im Projekt verwendeten Betriebssystemen.
+Das System wird über ein Webinterface angepasst und unterscheidet sich stark zu den anderen im Projekt verwendeten Betriebssystemen.
 Durch diese Unterschiede wurden nur enzelne Teile des Projektes auf OpenWRT umgesetzt.
 
 \section{IPFire}
@@ -17,10 +17,11 @@ Durch diese Unterschiede wurden nur enzelne Teile des Projektes auf OpenWRT umge
 Quelle: \cite{fire1}
 \end{wrapfigure}
 Das Betriebssystem IPFire ist darauf ausgelegt, als Router genutzt zu werden, wobei das Augenmerk auf der implementierung einer Firewall oder eines VPN Gateways liegt.
-Das vorgehende Projekt hatte dieses Betriebssystem als Alternative vorgeschlagen, weshalb wir dieses System als Aternative untersucht haben. Zwei Abbilder für den Betrieb auf Arm Prozessoren stehen auf der Webseite des Betriebssystems bereit. \cite{fire} \\
-Bei beide Abbildern stellte sich allerdings herraus, dass die HDMI Schnittstelle nicht unterschtützt wird.
-Auch eine Verbindung SSH nicht möglich ist, da IPFire auf eine Konfiguration über das Webinterface ausgelegt ist.
-Eines der beiden Abbilder ist auf die Konfiguration über eine Serielle Schnittstelle Ausgelegt. Da uns aber für diese Schnittstelle keine Wekzeuge und Adapter bereitstehen, haben wir auch von dieser Option abgelassen.\\
+Das vorgehende Projekt hatte dieses Betriebssystem als Alternative vorgeschlagen, weshalb wir dieses System als Aternative untersucht haben.
+Zwei Abbilder für den Betrieb auf ARM Prozessoren stehen auf der Webseite des Betriebssystems bereit. \cite{fire} \\
+Bei beiden Abbildern stellte sich allerdings herraus, dass die HDMI Schnittstelle nicht unterstützt wird.
+Auch eine Verbindung über SSH nicht möglich ist, da IPFire auf die Konfiguration über ein Webinterface ausgelegt ist.
+Eines der beiden Abbilder ist auf die Konfiguration über eine Serielle Schnittstelle ausgelegt. Da uns aber für diese Schnittstelle keine Wekzeuge und Adapter bereitstehen, haben wir auch von dieser Option abgelassen.\\
 
 \newpage
 \section{Bananian}
